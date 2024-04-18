@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILL CALCULATOR</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <style>
+      body {
+        background-image: url('https://e0.pxfuel.com/wallpapers/422/824/desktop-wallpaper-strawberries-fruits-basket-dark-background-berries.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        position: fixed;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+    .a{
+      width:400px;
+      height:500px;
+      margin:auto;
+      padding:20px;
+      border-radius:10px;
+      background: rgba(255, 255, 255, 0.5);
+      color:rgb(12, 12, 12);
+      text-transform:uppercase ;
+      font-style:oblique ;
+      position: fixed;
+      font-size: medium;
+    }
+    .checkbox-label input[type="checkbox"] {
+            margin-right: 5px;
+          
+        }
+    .form-control{
+      width:100%;
+      float:end;
+    }    
+    #totalAmount{
+      width:100px;
+    }
+    .b{
+      display:flex;
+      align-items:center;
+    }
+    .form-label{
+      margin-right:10px;
+    }
+    </style>
+</head>
+<body>
+<div class="a ">
+        <center><h3 class="text-align-top mb-4 fs-1"><b>BILL CALCULATOR</b></h3></center><br>
+        <div class="mb-3 ">
+            <label for="item1" class="container checkbox-label" >
+                <input type="checkbox" id="item1" value="100">apple(100.00)
+                <input type="number" id="quantity1" value="" min="1" max="10"  style="width: 40px;margin:0px 60px">
+                <span class="checkmark"></span>
+              </label>
+              <label for="item2" class="container checkbox-label">
+                <input type="checkbox" id="item2" value="150">watermelon(150.00)
+                <input type="number" id="quantity2" value="" min="1" max="10" style="width: 40px;">
+                <span class="checkmark"></span>
+              </label>
+              <label for="item3" class="container checkbox-label">
+                <input type="checkbox" id="item3" value="100">orange(100.00)
+                <input class="ml-5" type="number" id="quantity3" value="" min="1" max="10" style="width: 40px; margin:0px 45px">
+                <span class="checkmark"></span>
+              </label>
+              <label for="item3" class="container checkbox-label">
+                <input type="checkbox" id="item4" value="50">Banana(50.00)
+                <input type="number" id="quantity4" value="" min="1" max="10" style="width: 40px;margin:0px 55px;">
+                <span class="checkmark"></span>
+              </label>
+              <label for="item3" class="container checkbox-label">
+                <input type="checkbox" id="item5" value="20">Lemon(20.00)
+                <input type="number" id="quantity5" value="" min="1" max="10" style="width: 40px;margin:0px 65px">
+                <span class="checkmark"></span>
+              </label>
+              <label for="item3" class="container checkbox-label">
+                <input type="checkbox" id="item6" value="70">Papaya(70.00)
+                <input type="number" id="quantity6" value="" min="1" max="10" style="width: 40px;margin:0px 60px">
+                <span class="checkmark"></span>
+              </label>
+              <label for="item3" class="container checkbox-label">
+                <input type="checkbox" id="item7" value="450">Strawberry(450.00)
+                <input type="number" id="quantity7" value="" min="1" max="10" style="width: 40px;">
+                <span class="checkmark"></span>
+              </label>
+        </div><br>
+        <div class=" b mb-3">
+            <label for="totalAmount" class="form-label">Total Amount:</label>
+            <input type="text" class="form-control" id="totalAmount" readonly>
+        </div>
+        <br>
+        <button class="btn btn-primary" id="calculateBtn">Calculate Total</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var calculateBtn = document.getElementById("calculateBtn");
+            calculateBtn.addEventListener("click", calc);
+
+            function calc() {
+                var itemtotal = 0;
+                var items = document.getElementsByTagName("input");
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].type === "checkbox" && items[i].checked) {
+                      var quantity = parseInt(document.getElementById("quantity" + items[i].id.slice(-1)).value);
+                        itemtotal += parseFloat(items[i].value) * quantity;
+                    }
+                }
+                document.getElementById("totalAmount").value = "$" + itemtotal.toFixed(2);
+            }
+        });
+    </script>
+  </div>
+</body>
+</html>
